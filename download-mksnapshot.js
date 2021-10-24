@@ -2,7 +2,7 @@ const fs = require('fs')
 const path = require('path')
 const { downloadArtifact } = require('@electron/get')
 const extractZip = require('extract-zip')
-const versionToDownload = require('./package').version
+const versionToDownload = process.env.electron_custom_version || require('./package').version
 let archToDownload = process.env.npm_config_arch
 
 if (process.arch.indexOf('arm') === 0 && process.platform !== 'darwin') {
